@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ project.name }}</title>
+</head>
+<body>
+
+<h1>{{ project.name }}</h1>
+
+<p>{{ project.description }}</p>
+
+<a href="/project/{{ project.id }}/task/create/">
+    Add New Task
+</a>
+
+<hr>
+
+<h2>Tasks</h2>
+
+{% for task in tasks %}
+
+<div>
+    <h3>{{ task.title }}</h3>
+
+    <p>{{ task.description }}</p>
+
+    <p>Status: {{ task.status }}</p>
+
+    <a href="/task/{{ task.id }}/">
+        View Task
+    </a>
+</div>
+
+<hr>
+
+{% empty %}
+
+<p>No tasks yet.</p>
+
+{% endfor %}
+
+<a href="/">Back</a>
+
+</body>
+</html>

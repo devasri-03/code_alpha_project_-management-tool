@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ task.title }}</title>
+</head>
+<body>
+
+<h1>{{ task.title }}</h1>
+
+<p>{{ task.description }}</p>
+
+<h3>Status</h3>
+<p>{{ task.status }}</p>
+
+<hr>
+
+<h2>Comments</h2>
+
+{% for comment in comments %}
+
+<div>
+    <strong>{{ comment.user.username }}</strong>
+    <p>{{ comment.text }}</p>
+    <small>{{ comment.created_at }}</small>
+</div>
+
+<hr>
+
+{% empty %}
+
+<p>No comments yet.</p>
+
+{% endfor %}
+
+<h3>Add Comment</h3>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <textarea name="text" required></textarea>
+
+    <br><br>
+
+    <button type="submit">Post Comment</button>
+</form>
+
+<br>
+
+<a href="/">Dashboard</a>
+
+</body>
+</html>

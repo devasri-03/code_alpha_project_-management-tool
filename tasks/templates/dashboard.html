@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Management Tool</title>
+</head>
+<body>
+
+<h1>Project Management Dashboard</h1>
+
+<p>Welcome, {{ request.user.username }}</p>
+
+<a href="/project/create/">Create New Project</a>
+
+<hr>
+
+<h2>My Projects</h2>
+
+{% for project in projects %}
+
+<div>
+    <h3>{{ project.name }}</h3>
+    <p>{{ project.description }}</p>
+
+    <a href="/project/{{ project.id }}/">
+        Open Project
+    </a>
+</div>
+
+<hr>
+
+{% empty %}
+
+<p>No projects created yet.</p>
+
+{% endfor %}
+
+</body>
+</html>
